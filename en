@@ -1,0 +1,10 @@
+#!/bin/bash
+
+NOTES_DIR=~/notes/
+
+topic="${1}notes.txt"
+
+rm -f "${NOTES_DIR}${topic}"
+touch ${NOTES_DIR}${topic}
+echo ------- New file $(Date) --------- >> ${NOTES_DIR}${topic}
+echo New Notes File Generated

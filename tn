@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+
+date=$(date)
+
+topic="$1"
+
+filename="${HOME}/notes/${topic}notes.txt"
+
+read -p "Note: " note
+
+echo "$date: $note" >> "$filename"
+echo "Note '$note' saved to $filename"
