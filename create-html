@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+# Create HTML File
+# This script creates a new html5 file, sets permissions and more
+# Author: Jordan
+
+
+if [[ ! $1 ]]; then
+    echo "Missing arguement filename"
+    exit 1
+fi
+
+if [[ ! $2 ]]; then
+    echo "Missing arguement target directory, creating in current directory"
+    dir="./"
+else
+    dir="$2"
+fi
+
+scriptname="$1"
+
+filename="${dir}/${scriptname}"
+
+
+if [[ -e $filename ]]; then
+    echo "File ${filename} already exists"
+    
+    exit 1
+fi
+
+if type "$filename"; then
+    echo "There is already a command with name ${scriptname}"
+    exit 1
+fi
+
+if [[ ! -d $dir ]]; then
+    
+    if mkdir "$dir"; then
+        echo "created ${dir}"
+    else
+        echo "Could not create ${dir}"
+        exit 1
+    fi
+fi
+
+cp index.html $filename
+
+chmod u+x $filename
+
+if [[ $EDITOR ]]; then
+    $EDITOR "$filename"
+else
+    echo "File created; \$EDITOR not set"
+fi
