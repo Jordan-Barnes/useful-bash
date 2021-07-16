@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ ! $1 ]]
+then printf "|%25s | %25s |%25s |\n" $(ls $1)
+fi
+
+if [[ -d $1 ]]
+then printf "|%35s | %35s |%35s |\n" $(ls $1)
+else echo "Not a Directory"
+    exit 1
+fi
+
+exit 0
